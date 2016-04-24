@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="segmentoApp">
+<head>
+	<meta charset="utf-8">
+	<title>Segmento table</title>
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="css/app.css">
+
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-route/angular-route.js"></script>
+	<script src="bower_components/at-table/dist/angular-table.min.js"></script>
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+	<script src="js/app.js"></script>
+	<script src="js/controllers.js"></script>
+	<script src="js/directives.js"></script>
+
+	<!-- Header result block -->
+	<div class="container-fluid headBlock" ng-controller="tableCRUDCtrl">
+		<div class="row">
+			<div class="logoContainer col-md-offset-2 col-md-4">
+				<img src="img/logo.PNG" alt="Segmento">
+			</div>
+			<div class="resultContainer col-md-offset-2 col-md-2">
+				{{getTotal()}}
+			</div>
+		</div>
+	</div>
+
+</head>
+<body>
+
+	<div ng-view></div>
+
+</body>
+</html>

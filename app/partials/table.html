@@ -1,0 +1,65 @@
+<div class="container tableContainer">
+  <table class="table table-striped" at-table at-paginated at-list="originalList" at-config="config">
+    <thead></thead>
+    <tbody>
+      <tr>
+        <td at-title="Id" at-implicit at-sortable at-attribute="id" width="50" at-initial-sorting="asc" ng-click="edit(item)"></td>
+        <td at-title="Средства" at-implicit at-sortable at-attribute="money" width="150"></td>
+        <td at-title="Комментарий" at-implicit at-attribute="comment" width="450"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <at-pagination at-list="originalList" at-config="config"></at-pagination>
+
+  <input type="button" class="btn btn-add" value="Добавить" ng-click="showClearForm()"/>
+  
+  <div class="raw" ng-show="showFormFlag">
+    <div class="col-md-offset-5 col-md-6 itemFormContainer">
+      <!--<h3>Запись #{{originalList.length + 1}}</h3>-->
+
+      <form novalidate name="itemForm" role="form">
+            <h3 name="id" ng-model="item.id">Запись #{{item.id}}</h3>
+            <div class="moneyContainer raw">
+            <div class="col-md-11">
+              <input id="money" name="money" type="text" ng-model="item.money" placeholder="Средства" required valid-price />
+            </div>
+            <div class="col-md-1">
+              <div id="moneyErr" ng-style="moneyErrorStyle">
+                  <p class="errMsg" ng-repeat="message in failedValidationsMoney">{{message}}</p>
+              </div>
+            </div>
+            </div>
+
+            <div class="commentContainer raw">
+              <div class="col-md-11">
+                <textarea rows="5" id="comment" name="comment" ng-model="item.comment" placeholder="Комментарий" required valid-comment></textarea>
+              </div>
+              <div class="col-md-1">
+                <div id="commentErr" ng-style="commentErrorStyle">
+                    <p class="errMsg" ng-repeat="message in failedValidationsComment">{{message}}</p>
+                </div>
+              </div>
+              
+            </div>
+
+          <div class="raw buttonsContainer">
+            <div class="col-md-6">
+              <input class="btn btn-default" id="save" type="button" value="Сохранить" ng-click="add(item)" />
+            </div>
+            <div class="col-md-6">
+              <input class="btn btn-cancel" id="cancel" type="button" value="Отменить" ng-click="cancel()"/>
+            </div>
+          </div>
+      </form>
+    </div>
+  </div>
+
+  <!--
+  <h3>Filter</h3>
+  <input type="text" class="form-control ng-pristine ng-valid" ng-model="query" ng-change="updateFilteredList()">
+  -->
+
+  
+  
+</div>
