@@ -15,16 +15,16 @@
   <input type="button" class="btn btn-add" value="Добавить" ng-click="showClearForm()"/>
   
   <div class="raw" ng-show="showFormFlag">
-    <div class="col-md-offset-5 col-md-6 itemFormContainer">
+    <div class="col-xs-offset-5 col-xs-6 col-sm-offset-5 col-sm-6 col-md-offset-5 col-md-6 col-lg-offset-5 col-lg-6 itemFormContainer">
       <!--<h3>Запись #{{originalList.length + 1}}</h3>-->
 
       <form novalidate name="itemForm" role="form">
             <h3 name="id" ng-model="item.id">Запись #{{item.id}}</h3>
             <div class="moneyContainer raw">
-            <div class="col-md-11">
+            <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
               <input id="money" name="money" type="text" ng-model="item.money" placeholder="Средства" required valid-price />
             </div>
-            <div class="col-md-1">
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
               <div id="moneyErr" ng-style="moneyErrorStyle">
                   <p class="errMsg" ng-repeat="message in failedValidationsMoney">{{message}}</p>
               </div>
@@ -32,10 +32,10 @@
             </div>
 
             <div class="commentContainer raw">
-              <div class="col-md-11">
+              <div class="ccol-xs-11 col-sm-11 col-md-11 col-lg-11">
                 <textarea rows="5" id="comment" name="comment" ng-model="item.comment" placeholder="Комментарий" required valid-comment></textarea>
               </div>
-              <div class="col-md-1">
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
                 <div id="commentErr" ng-style="commentErrorStyle">
                     <p class="errMsg" ng-repeat="message in failedValidationsComment">{{message}}</p>
                 </div>
@@ -44,10 +44,10 @@
             </div>
 
           <div class="raw buttonsContainer">
-            <div class="col-md-6">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
               <input class="btn btn-default" id="save" type="button" value="Сохранить" ng-click="add(item)" />
             </div>
-            <div class="col-md-6">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
               <input class="btn btn-cancel" id="cancel" type="button" value="Отменить" ng-click="cancel()"/>
             </div>
           </div>

@@ -149,7 +149,7 @@ appControllers.controller('tableCRUDCtrl', ['$scope', '$http', '$filter',
     var commentErrorStyle = {
       "border":"1px solid #ff2d01", 
       "border-radius":"5px", 
-      "margin-top":"30px", 
+      "margin-top":"40px", 
       "background-color":"#ff2d01", 
       "color":"white", 
       "text-align":"center",
