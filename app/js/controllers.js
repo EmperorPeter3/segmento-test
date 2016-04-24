@@ -7,8 +7,8 @@ var appControllers = angular.module('appControllers', []);
 appControllers.controller('tableCRUDCtrl', ['$scope', '$http', '$filter',
   function($scope, $http, $filter) {
     $scope.originalList = [
-      {id: 1, money: -869.80, comment: "McDonalds"},
-      {id: 2, money: -123.34, comment: "Андреевский"},
+      {id: 1, money: 100.80, comment: "McDonalds"},
+      {id: 2, money: 200.34, comment: "Андреевский"},
       {id: 3, money: -45.88, comment: "Магазин у дома"},
       {id: 4, money: 900.00, comment: "Project sold"},
       {id: 5, money: -876.00, comment: "McDonalds"},
@@ -33,14 +33,17 @@ appControllers.controller('tableCRUDCtrl', ['$scope', '$http', '$filter',
       fillLastPage: "yes"
     };
 
+    $scope.totalSum = 0;
+
     $scope.getTotal = function(){
-      var result = 0;
-      for(var count=0; count < $scope.originalList.length; count++){
-        result = result + $scope.originalList[count].money;
-      }
-      result = parseFloat(result).toFixed(2);
-      return result;
+      $scope.totalSum = 0;
+      $.each($scope.originalList, function( index, value ) {
+        $scope.totalSum = parseFloat($scope.totalSum) + parseFloat(value.money);
+      });
+      $(".resultContainer").text($scope.totalSum);
     };
+
+    $scope.getTotal();
     
     $scope.showFormFlag = false;
 
@@ -75,10 +78,10 @@ appControllers.controller('tableCRUDCtrl', ['$scope', '$http', '$filter',
       }else{            
         $scope.itemForm.$setPristine();
         if(typeof $scope.originalList[item.id -1] !== "undefined"){
-          $scope.originalList[item.id-1].money = $scope.item.money;
+          $scope.originalList[item.id-1].money = parseFloat($scope.item.money);
           $scope.originalList[item.id-1].comment = $scope.item.comment;
         } else {
-          $scope.originalList.push({id: $scope.originalList.length + 1, money: $scope.item.money, comment: $scope.item.comment});
+          $scope.originalList.push({id: $scope.originalList.length + 1, money: parseFloat($scope.item.money), comment: $scope.item.comment});
         }
         //$scope.updateFilteredList();
         $scope.getTotal();
